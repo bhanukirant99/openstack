@@ -1,0 +1,18 @@
+{
+    "name": "openstack",
+    "version": "1.0.0",
+    "type": "module",
+    "license": "MIT",
+    "main": "app.js",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "moment": "^2.29.4",
+        "nodemon": "^2.0.22",
+        "openstack-client": "^1.0.3"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "server": "nodemon node app.js"
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Instance List</title>
+</head>
+
+<body>
+    <h1>Select Instances</h1>
+    <label for="timeframe">Select Timeframe:</label>
+    <select id="timeframe">
+      <option value="6 hours ago">6 hours ago</option>
+      <option value="1 day ago">1 day ago</option>
+      <option value="1 week ago">1 week ago</option>
+      <option value="1 month ago">1 month ago</option>
+      <option value="random">Random date</option>
+    </select>
+    <br><br>
+    <button onclick="getInstances()">Get Instances</button>
+    <br><br>
+    <table id="instanceTable">
+        <tr>
+            <th>Project Name</th>
+            <th>Project ID</th>
+        </tr>
+    </table>
+    <script>
+        function getInstances() {
+            var timeframe = document.getElementById("timeframe").value;
+            var url2 = "http://localhost:5000/";
+            fetch(url2)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("yes")
+                })
+                .catch(error => console.error(error));
+
+            var url = "http://localhost:5000/instances?timeframe=" + timeframe;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var table = document.getElementById("instanceTable");
+                    table.innerHTML = "<tr><th>Project Name</th><th>Project ID</th></tr>";
+                    data.forEach(instance => {
+                        var row = table.insertRow();
+                        var nameCell = row.insertCell(0);
+                        var idCell = row.insertCell(1);
+                        nameCell.innerHTML = instance.project_name;
+                        idCell.innerHTML = instance.project_id;
+                    });
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+</body>
+
+</html>

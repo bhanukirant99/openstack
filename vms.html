@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Instances Dropdown</title>
+</head>
+
+<body>
+    <label for="instances">Select Instance:</label>
+    <select id="instances">
+      <option value="1week">Since 1 Week Ago</option>
+      <option value="1month">Since 1 Month Ago</option>
+      <option value="3months">Since 3 Months Ago</option>
+      <option value="6months">Since 6 Months Ago</option>
+      <option value="1year">Since 1 Year Ago</option>
+      <option value="morethan1year">More Than 1 Year Ago</option>
+    </select>
+    <button onclick="getVMs()">Get Virtual Machines</button>
+    <table id="vm-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getVMs() {
+            const selectedPeriod = document.getElementById("instances").value;
+            const data = [{
+                    id: 1,
+                    name: "VM 1"
+                }, {
+                    id: 2,
+                    name: "VM 2"
+                }, {
+                    id: 3,
+                    name: "VM 3"
+                }, {
+                    id: 4,
+                    name: "VM 1Week Ago"
+                }, {
+                    id: 5,
+                    name: "VM 2Weeks Ago"
+                }, {
+                    id: 6,
+                    name: "VM 1Month Ago"
+                }, {
+                    id: 7,
+                    name: "VM 3Months Ago"
+                }, {
+                    id: 8,
+                    name: "VM 6Months Ago"
+                }, {
+                    id: 9,
+                    name: "VM 1Year Ago"
+                }, {
+                    id: 10,
+                    name: "VM More Than 1 Year Ago"
+                }, ]
+                // fetch(`http://localhost:5000/vms?period=${selectedPeriod}`)
+                //     .then((response) => response.json())
+                //     .then((data) => {
+            console.log(data)
+            const vmTable = document.getElementById("vm-table").getElementsByTagName("tbody")[0];
+            vmTable.innerHTML = "";
+            data.forEach((vm) => {
+                const row = vmTable.insertRow();
+                const idCell = row.insertCell();
+                const nameCell = row.insertCell();
+                idCell.innerText = vm.id;
+                nameCell.innerText = vm.name;
+            });
+            // })
+            // .catch((error) => console.error(error));
+        }
+    </script>
+</body>
+
+</html>
