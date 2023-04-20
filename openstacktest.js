@@ -2,6 +2,12 @@ import client from 'openstack-client'
 import moment from 'moment';
 const now = moment();
 
+const instances = [
+    { project_name: 'test', project_id: 1, created_at: now },
+    { project_name: 'test1', project_id: 2, created_at: now.subtract(1, 'hours') },
+    { project_name: 'test2', project_id: 3, created_at: now.subtract(2, 'hours') }
+];
+
 // let client = require("openstack-client");
 let token = client.authenticate({
     endpoint: "https://192.168.29.10:5000/v3/",
@@ -32,10 +38,4 @@ export { client, token, instances }
 //     { id: 8, name: "VM 6Months Ago" },
 //     { id: 9, name: "VM 1Year Ago" },
 //     { id: 10, name: "VM More Than 1 Year Ago" },
-// ];
-
-// const instances = [
-//     { project_name: 'test', project_id: 1, created_at: now },
-//     { project_name: 'test1', project_id: 2, created_at: now.subtract(1, 'hours') },
-//     { project_name: 'test2', project_id: 3, created_at: now.subtract(2, 'hours') }
 // ];

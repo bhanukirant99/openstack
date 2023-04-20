@@ -32,6 +32,18 @@ app.get('/instances', (req, res) => {
 
 
 
+const list = [
+    { id: 1, name: "VM 1" },
+    { id: 2, name: "VM 2" },
+    { id: 3, name: "VM 3" },
+    { id: 4, name: "VM 1Week Ago" },
+    { id: 5, name: "VM 2Weeks Ago" },
+    { id: 6, name: "VM 1Month Ago" },
+    { id: 7, name: "VM 3Months Ago" },
+    { id: 8, name: "VM 6Months Ago" },
+    { id: 9, name: "VM 1Year Ago" },
+    { id: 10, name: "VM More Than 1 Year Ago" },
+];
 app.get("/vms", (req, res) => {
     console.log(req.query.period)
     const period = req.query.period;
