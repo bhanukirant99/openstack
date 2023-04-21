@@ -5,30 +5,30 @@ import express from 'express'
 import moment from 'moment';
 const app = express();
 import cors from 'cors'
-import { client, token, instances } from './openstacktest.js';
+// import { client, instances } from './openstacktest.js';
 
-app.use(cors)
+// app.use(cors)
 
-app.get('/', (req, res) => {
-    console.log("working")
-})
+// app.get('/', (req, res) => {
+//     console.log("working")
+// })
 
-// Define the route for GET /instances
-app.get('/instances', (req, res) => {
-    console.log("yes")
+// // Define the route for GET /instances
+// app.get('/instances', (req, res) => {
+//     console.log("yes")
 
-    const timeframe = req.query.timeframe;
-    const now = moment();
+//     const timeframe = req.query.timeframe;
+//     const now = moment();
 
-    const start = now.subtract(timeframe, 'hours');
+//     const start = now.subtract(timeframe, 'hours');
 
-    const filteredInstances = instances.filter(instance => {
-        const instanceTime = moment(instance.created_at);
-        return instanceTime.isBetween(start, now);
-    });
+//     const filteredInstances = instances.filter(instance => {
+//         const instanceTime = moment(instance.created_at);
+//         return instanceTime.isBetween(start, now);
+//     });
 
-    res.json(filteredInstances);
-});
+//     res.json(filteredInstances);
+// });
 
 
 

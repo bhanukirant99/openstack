@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="allocation">Allocation:</label>
+    <select id="allocation" onchange="filterAllocation()">
+  <option value="">All</option>
+  <option value="allocated">Allocated</option>
+  <option value="unallocated">Unallocated</option>
+</select>
+    <br>
+    <br>
+    <div id="items">
+        <div class="item" data-allocation="allocated">192.168.10.1 - Allocated</div>
+        <div class="item" data-allocation="unallocated">192.168.10.1 - Unallocated</div>
+        <div class="item" data-allocation="allocated">192.168.10.1 - Allocated</div>
+        <div class="item" data-allocation="unallocated">192.168.10.1 - Unallocated</div>
+    </div>
+    <script>
+        function filterAllocation() {
+            const selectedAllocation = document.getElementById("allocation").value;
+            const items = document.querySelectorAll(".item");
+            items.forEach(item => {
+                if (selectedAllocation === "" || item.dataset.allocation === selectedAllocation) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -15,12 +15,12 @@ let token = client.authenticate({
     password: "920eb00a07344ff0abb29d33d1bc5f7d",
     userDomainName: "Default",
     projectName: "test",
-    projectDomainName: "Default"
-        // verify: false // add this line to disable SSL certificate verification
+    projectDomainName: "Default",
+    verify: false // add this line to disable SSL certificate verification
 });
 
 
-export { client, token, instances }
+export { client, instances }
 
 
 
